@@ -1,0 +1,10 @@
+gradio==3.6
+Jinja2==3.0.3
+numpy
+torch
+tqdm
+colored
+more-itertools
+transformers>=4.19.0
+ffmpeg-python==0.2.0
+onnxruntime-gpu==1.13.1
