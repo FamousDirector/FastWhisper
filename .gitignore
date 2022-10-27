@@ -3,3 +3,4 @@
 onnx__*
 decoder.*
 encoder.*
+.*/

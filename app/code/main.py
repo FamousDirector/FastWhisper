@@ -120,18 +120,18 @@ def detect_audio(audio_data, language):
 if __name__ == '__main__':
     iface = gr.Interface(fn=detect_audio,
                          inputs=[
-                             gr.inputs.Audio(label="Input Audio", type="filepath"),
-                             gr.inputs.Dropdown(choices=["en", "fr"],
-                                                default="en", label="Transcription Language"),
+                             gr.Audio(label="Input Audio", type="filepath"),
+                             gr.Dropdown(choices=["en", "fr"], label="Transcription Language"),
                          ],
                          outputs=[
-                             gr.outputs.Textbox(label="Original Output"),
-                             gr.outputs.Textbox(label="Scripted Output"),
-                             gr.outputs.Textbox(label="ONNX Output"),
-                             gr.outputs.Textbox(label="TRT Output"),
-
+                             gr.Textbox(label="Original Output"),
+                             gr.Textbox(label="Scripted Output"),
+                             gr.Textbox(label="ONNX Output"),
+                             gr.Textbox(label="TRT Output"),
                          ],
-                         theme="dark",
+                         examples=[
+                             ["AnotherTestRecording.wav", "en"]
+                         ],
                          title="Audio App",
                          description="A simple app for Whisper Transcription"
                          )
