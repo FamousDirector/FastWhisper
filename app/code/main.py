@@ -16,7 +16,7 @@ import scriptable_model
 
 model_name = os.getenv("MODEL_NAME", "")
 if model_name == "":
-    model_name = "medium"
+    model_name = "tiny"
     print(f"Did not get a model_name from env variable. Defaulting to {model_name}...")
 
 print(f"Using {model_name} Whisper model")

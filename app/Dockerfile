@@ -13,7 +13,9 @@ RUN python3 -m pip install -r requirements.txt
 
 RUN python3 -m pip install git+https://github.com/openai/whisper.git
 
+# pre download models
+RUN python3 -c "import whisper; [whisper.load_model(n) for n in whisper._MODELS]"
+
 # setup main.py to run app
 COPY code/ .
-RUN python3 predownload_models.py
 CMD ["python3","main.py"]

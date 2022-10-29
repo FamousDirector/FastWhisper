@@ -11,11 +11,12 @@ else
     echo "Exporting $MODEL_NAME model to ONNX."
     docker run -v $PWD/$DIR:/opt/project/ --shm-size=4gb --env MODEL_NAME=$MODEL_NAME fastwhisper python3 export_onnx_model.py
 fi
-FILE=$DIR/$MODEL_NAME_fp16.engine
+FILE=$DIR/${MODEL_NAME}_fp16.engine
 if [[ -f "$FILE" ]]; then
-    echo "Converting $MODEL_NAME ONNX model to TensorRT."
+    echo "$FILE is already created."
 else
-    docker run -v $PWD/$DIR:/opt/project/ --shm-size=4gb fastwhisper trtexec --onnx=$MODEL_NAME.onnx --fp16 --saveEngine=$MODEL_NAME_fp16.engine --buildOnly --memPoolSize=workspace:4000
+    echo "Converting $MODEL_NAME ONNX model to TensorRT."
+    docker run -v $PWD/$DIR:/opt/project/ --shm-size=4gb fastwhisper trtexec --onnx=$MODEL_NAME.onnx --fp16 --saveEngine=${MODEL_NAME}_fp16.engine --buildOnly --memPoolSize=workspace:4000
 fi
 
 
