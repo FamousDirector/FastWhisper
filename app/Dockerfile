@@ -18,4 +18,4 @@ RUN python3 -c "import whisper; [whisper.load_model(n) for n in whisper._MODELS]
 
 # setup main.py to run app
 COPY code/ .
-CMD ["python3","main.py"]
+CMD ["python3", "-u", "main.py"]
